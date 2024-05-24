@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- <link rel="stylesheet" href="style1.css"> -->
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="./assets/style2.css">
     <title>Joey Barrientes | Personal Portfolio</title>
 </head>
 <body>
 
     <nav>
-        <a href="#" class="homeButton" title="Return to home"><img src="./assets/images/home.png" alt="Home button icon" width="30px" height="30px"></a>
+        <a href="index.html" class="homeButton" title="Return to home"><img src="./assets/images/home.png" alt="Home button icon" width="30px" height="30px"></a>
         <ul class="navigation">
             <li><a href="#about" class="nav-link">About</a></li>
             <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -31,20 +31,68 @@
             <div class="headerText">Personal</div>
             <div class="headerText">Portfolio</div>
         </div>
+        <!-- <div class="oval-image-container">
+            <img src="./assets/images/headerImage2.jpg" alt="Profile picture" class="oval-image">
+        </div> -->
         <!-- <img class="headerImage" src="./assets/images/wave.svg" alt=""> -->
+
     </section>
     <div class="headerMain">
 
 
     </div>
 
-    <div class="main">
-        <div>main</div>
-    </div>
+    <section id="about">
+        <hr class="sectionDivider">
+        <h1>01. About</h1>
+        <p>Hi there! I'm Joey Barrientes, a program and web developer.</p>
+        <p><em>Text asdnaljsnlwndfWEOFIJ    Fo eifjWEIOPFJoiej po EOIj iejOIE JOij eofJ EPOIFJ poejoiJad;oin;ON;oienf;oiEN;OIjweifj  i po OIJEOI</em></p>
 
-    <div class="skills" id="skills">
-        <div>skills</div>
-    </div>
+    </section>
+
+    <section id="skills">
+        <hr class="sectionDivider">
+        <h1>02. Skills</h1>
+    
+        <div class="slideshow-container">
+            <div class="slideshow" id="slideshow">
+            <div class="slide"><img src="./assets/images/c-icon.png" alt="Sass">
+                <span>C Programming</span>
+                <span>1</span>
+            </div>
+            <div class="slide"><img src="./assets/images/python-icon.png" alt="Tailwind">
+                <span>PYTHON</span>
+                <span>2</span>
+            </div>
+            <div class="slide"><img src="./assets/images/html-icon.png" alt="Git">
+                <span>HTML</span>
+                <span>3</span>
+            </div>
+            <div class="slide"><img src="./assets/images/css-icon.png" alt="Webpack">
+                <span>CSS</span>
+                <span>4</span>
+            </div>
+            <div class="slide"><img src="./assets/images/js-icon.png" alt="Jest">
+                <span>JAVASCRIPT</span>
+                <span>5</span>
+            </div>
+            <div class="slide"><img src="./assets/images/headerImage2.jpg" alt="NPM">
+                <span>GIT</span>
+                <span>6</span>
+            </div>
+            <div class="slide"><img src="./assets/images/headerImage2.jpg" alt="MongoDB">
+                <span>text</span>
+                <span>7</span>
+            </div>
+            </div>
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+        <hr class="sectionDivider">
+    </section>
+      
+        
+    </section>
 
     <div class="projects" id="projects">
         <div>projects</div>
@@ -58,10 +106,10 @@
     <footer>
         <p class="copy">&copy; Copyright 2024</p>
         <p class="copy">Joey Barrientes</p>
-        <a href="https://www.flaticon.com" title="Icon Attributions">Icons created by Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com" title="Icon Attributions">Icons created by Freepik and Pixel perfect - Flaticon</a>
     </footer>
 
     
-    <script src="script.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
 </html>

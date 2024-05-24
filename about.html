@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Navigation</title>
+    <link rel="stylesheet" href="./assets/style2.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="homeButton" title="Return to home"><img src="./assets/images/home.png" alt="Home button icon" width="30px" height="30px"></a>
+        <ul class="navigation">
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+
+        <button class="burger-menu" id="burger-menu">
+            <ion-icon class="bars" name="menu-outline"></ion-icon>
+        </button>
+    </nav>
+    <section id="about">
+        <h1>01. About</h1>
+        <p>Hi there! I'm Seb, a web dev. <span>(as you might have guessed with the title)</span></p>
+        <p><em>Growing up, I always had an affinity for everything tech related. Jailbreaking my first iPod, installing custom ROMs on my android phones (and nearly bricking them) or modding my gaming consoles were some of the things that developed my problem solving skills.</em></p>
+        <p>Today I'm enthralled by <strong>web development</strong>. Creating new experiences, implementing eye pleasing designs and making them come to life with animation is what I do best.</p>
+        <div class="slideshow-container">
+            <div class="slideshow" id="slideshow">
+                <div class="slide"><img src="./assets/images/headerImage1.jpg" alt="Sass"><p>SASS</p></div>
+                <div class="slide"><img src="./assets/images/headerImage2.jpg" alt="Tailwind"><p>TAILWIND</p></div>
+                <div class="slide"><img src="./assets/images/headerImage2.jpg" alt="Git"><p>GIT</p></div>
+                <div class="slide"><img src="./assets/images/headerImage2.jpg" alt="Webpack"><p>WEBPACK</p></div>
+                <div class="slide"><img src="./assets/images/headerImage2.jpg" alt="Jest"><p>JEST</p></div>
+                <div class="slide"><img src="./assets/images/headerImage2.jpg" alt="NPM"><p>NPM</p></div>
+                <div class="slide"><img src="./assets/images/headerImage2.jpg" alt="MongoDB"><p>MONGODB</p></div>
+            </div>
+            <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+            <button class="next" onclick="moveSlide(1)">&#10095;</button>
+        </div>
+    </section>
+
+    <script src="./assets/script.js"></script>
+</body>
+</html>
