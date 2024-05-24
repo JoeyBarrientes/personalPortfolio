@@ -90,6 +90,7 @@ nav ul {
 nav ul li {
   font-weight: var(--bold-font);
 }
+
 .burger-menu {
   color: var(--primary-color);
   font-size: 2rem;
@@ -142,7 +143,6 @@ nav ul li {
   filter: brightness(1);
 }
 
-
 .headerText{
   overflow: hidden;
   text-align: left;
@@ -150,7 +150,6 @@ nav ul li {
   width: -moz-fit-content;
   width: fit-content;
   transition: color .2s;
-  /* font-weight: 200; */
   letter-spacing: 0.1rem;
 }
 
@@ -158,7 +157,6 @@ nav ul li {
   align-self: flex-start;
   font-weight: bold;
   font-size: 9vw;
-  /* letter-spacing: 0.5rem; */
 }
 
 .headerText:nth-child(2) {
@@ -172,7 +170,6 @@ nav ul li {
   margin-top: 1vw;
   font-weight: light;
   font-size: 6.5vw;
-  /* font-family: cinzelDec; */
 }
 
 .headerText:nth-child(4) {
@@ -180,56 +177,59 @@ nav ul li {
   margin-top: 1vw;
   font-weight: light;
   font-size: 6.5vw;
-  /* font-family: cinzelDec; */
 }
-
-
 
 #skills,
 #about,
 #projects,
 #contact {
-  margin: 0px 30px 0px 30px;
-  padding-top: 60px;
+  margin: 0px 20px 0px 20px;
+  padding-top: 50px;
 }
 
 #about h1,
 #skills h1,
 #projects h1,
 #contact h1 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
+  padding-top: 10px;
 }
 
 #about h1 span,
 #skills h1 span,
 #projects h1 span,
 #contact h1 span {
-    font-size: 1rem;
-    color: #58545B;
+  font-size: 1rem;
+  color: #58545B;
+}
+
+.aboutContainer {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
 }
 
 #skills p,
 #about p {
   font-size: 1rem;
-  margin: 10px 0;
+  margin: 15px;
 }
 
 #about p span,
 #skills p span {
-    font-size: 0.8em;
-    color: gray;
+  font-size: 0.8em;
+  color: gray;
 }
 
 .slideshow-container {
-    /* outline: auto; */
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .slideshow {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
 }
 
 .slide {
@@ -240,74 +240,76 @@ nav ul li {
   align-items: center;
   box-sizing: border-box;
   text-align: center;
-  padding: 1vw;
+  padding: 1.5vw;
   margin: 10px;
   background-color: white;
-  /* outline: 0.000001px solid; */
-  box-shadow: 0 3px 5px rgb(0, 0, 0,0.1);
-  /* outline: dotted red; */
+  box-shadow: 0 3px 10px rgba(161,122,105,0.3);
+  border-radius: 10px;
 }
 
 .slide span{
   display: flex;
-  font-size: 0.7rem;
+  font-size: 0.5rem;
   justify-content: center;
   align-items: center;
-
-}
-
-.slide span{
   padding-top: 10px;
 }
 
 .slide span:last-child{
   color: #58545B;
-  font-size: 0.7rem;
-  /* padding-top: 20px; */
+  font-size: 0.5rem; 
+  text-wrap: wrap;
 }
 
-.slide img {
-    width: 50%;
-    height: auto;
+.slide img { 
+  height: 100px;
+  width: auto;
+  object-fit: cover;
+  padding: 0;
+  margin: 0;
+  
 }
 
 button.prev, button.next {
-    position: absolute;
-    top: 40%;
-    transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
+  position: absolute;
+  top: 40%;
+  transform: translateY(-40%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
 }
 
 button.prev {
-    left: 10px;
+  left: 15px;
 }
 
 button.next {
-    right: 10px;
+  right: 15px;
 }
 
 button.prev:hover, button.next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 /* Media queries for responsive design */
 @media (min-width: 1024px) {
   .slide {
-      min-width: 18.4%; /* Show 5 slides at a time */
+    min-width: 18.42%; /* Show 5 slides at a time */
   }
 }
 
 @media (max-width: 1023px) {
   .slide {
-      min-width: 29.75%; /* Show 3 slides at a time */
+    min-width: 29.91%; /* Show 3 slides at a time */
+  }
+  .hero{
+    padding: 200px 0px 200px 0px;
   }
 }
 
-footer{
+footer {
   background-color: #58545B;
   color: white;
   padding: 1.25rem;
@@ -316,7 +318,8 @@ footer{
   font-size: 0.8rem;
   letter-spacing: 0.05rem;
 }
-footer a{
+
+footer a {
   color: white;
   font-size: 0.8rem;
   text-decoration: underline;
