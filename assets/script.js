@@ -29,22 +29,14 @@ function moveSlide(step) {
     showSlide(currentSlide + step);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    showSlide(currentSlide);
-    setInterval(() => {
-        moveSlide(1);
-    }, 4000); // Change slide every 4 seconds
+// document.addEventListener('DOMContentLoaded', () => {
+//     showSlide(currentSlide);
+//     setInterval(() => {
+//         moveSlide(1);
+//     }, 4000); // Change slide every 4 seconds
 
-    window.addEventListener('resize', () => {
-        showSlide(currentSlide);
-    });
-});
+//     window.addEventListener('resize', () => {
+//         showSlide(currentSlide);
+//     });
+// });
 
-
-
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.querySelector('.nav-links');
-
-hamburger.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-});

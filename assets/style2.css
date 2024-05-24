@@ -186,23 +186,32 @@ nav ul li {
 
 
 #skills,
-#about {
-  margin: 0px 50px 0px 50px;
+#about,
+#projects,
+#contact {
+  margin: 0px 30px 0px 30px;
   padding-top: 60px;
 }
-/* #skills{
-  padding-top: 20px;
-} */
 
 #about h1,
-#skills h1 {
-    font-size: 2em;
+#skills h1,
+#projects h1,
+#contact h1 {
+    font-size: 1.5rem;
+}
+
+#about h1 span,
+#skills h1 span,
+#projects h1 span,
+#contact h1 span {
+    font-size: 1rem;
+    color: #58545B;
 }
 
 #skills p,
 #about p {
-    font-size: 1.2em;
-    margin: 10px 0;
+  font-size: 1rem;
+  margin: 10px 0;
 }
 
 #about p span,
@@ -225,35 +234,40 @@ nav ul li {
 
 .slide {
   min-width: 33.3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   text-align: center;
-  padding: 35px;
+  padding: 1vw;
   margin: 10px;
   background-color: white;
+  /* outline: 0.000001px solid; */
   box-shadow: 0 3px 5px rgb(0, 0, 0,0.1);
   /* outline: dotted red; */
 }
 
 .slide span{
   display: flex;
-  font-size: 20px;
+  font-size: 0.7rem;
   justify-content: center;
   align-items: center;
 
 }
 
 .slide span{
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .slide span:last-child{
-  color: grey;
-  font-size: 0.8rem;
+  color: #58545B;
+  font-size: 0.7rem;
   /* padding-top: 20px; */
 }
 
 .slide img {
-    max-width: 100%;
+    width: 50%;
     height: auto;
 }
 
@@ -283,13 +297,13 @@ button.prev:hover, button.next:hover {
 /* Media queries for responsive design */
 @media (min-width: 1024px) {
   .slide {
-      min-width: 18.34%; /* Show 5 slides at a time */
+      min-width: 18.4%; /* Show 5 slides at a time */
   }
 }
 
 @media (max-width: 1023px) {
   .slide {
-      min-width: 29.44%; /* Show 3 slides at a time */
+      min-width: 29.75%; /* Show 3 slides at a time */
   }
 }
 
