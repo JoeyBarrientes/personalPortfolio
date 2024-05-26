@@ -39,3 +39,34 @@
 //         showSlide(currentSlide);
 //     });
 // });
+
+document.getElementById('burger-menu').addEventListener('click', function() {
+    var navigation = document.querySelector('.navigation');
+    var navLink = document.querySelector('.container > ul');
+    var sideHeader = document.querySelector('.sideHeaderContainer');
+    if (navigation.style.display === 'flex') {
+      navigation.style.display = 'none';
+      navLink.style.display = 'none';
+      sideHeader.style.display = 'none';
+    } else {
+      navigation.style.display = 'flex';
+      navLink.style.display = 'flex';
+      sideHeader.style.display = 'block';
+    }
+  });
+  
+  // Add event listener for window resize
+  window.addEventListener('resize', function() {
+    var navigation = document.querySelector('.navigation');
+    var sideHeader = document.querySelector('.sideHeaderContainer');
+    var burgerMenu = document.getElementById('burger-menu');
+    
+    if (window.innerWidth > 768) { // Adjust this value as per breakpoint
+      navigation.style.display = 'flex'; // Show navigation links
+      burgerMenu.style.display = 'none'; // Hide hamburger menu
+      sideHeader.style.display = 'none';
+    } else {
+      navigation.style.display = 'none'; // Hide navigation links
+      burgerMenu.style.display = 'flex'; // Show hamburger menu
+    }
+  });

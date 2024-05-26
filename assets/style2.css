@@ -43,12 +43,14 @@ img {
   --bottom-margin-2: 1rem;
   --line-height: 1.7rem;
   --transition: 0.3s;
+  
 }
 
 html {
   background-color: #fef6ec;
   font-size: 24px;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 header{
   position: sticky;
@@ -60,14 +62,9 @@ header{
   /* background-color: black; */
 
 }
-/* .gradientCircleContainer{
-  position: absolute;
-  width: 50%;
-  top: -5%;
-  left: -5%;
-  z-index: -1;
-  pointer-events: none;
-} */
+.gradientCircleContainer{
+  overflow: hidden;
+}
 .circleImage1{
   position: absolute;
   top: -5%;
@@ -88,6 +85,19 @@ header{
   transform: rotate(-20deg);
   max-width: 30vw;
   max-height: auto;
+  overflow: hidden;
+}
+
+.circleImage4{
+  position: absolute;
+  top: 32%;
+  left: 20%;
+  z-index: -1;
+  pointer-events: none;
+  width: 30%;
+  opacity: 0.5;
+  border-radius: 0px 30px;
+  filter: brightness(0.9);
 }
 
 hr {
@@ -108,17 +118,39 @@ hr {
 } */
 
 .navbar{
-  /* position: sticky;
+  position: sticky;
   top: 0;
-  left: 0; */
+  left: 0;
   z-index: 2;
-  /* display: flex; */
+  max-height: 35px;
+  display: flex;
   padding: 1.2rem 1.2rem;
-  background-color: rgba(255,248,239,0.3);
+  background-color: rgba(255,248,239,0.4);
   /* background-color: #fff8ef; */
 }
 
-.navigation .homeButton{
+.sideHeaderContainer{
+  z-index: -1;
+  position: absolute;
+  pointer-events: none;
+  top: 123.5%;
+  left: 75vw;
+  display: none;
+  width: 7rem;
+  height: 7.5rem;
+  
+}
+
+rect.sideHeader{
+  /* fill: black; */
+  fill: rgba(255,248,239,0.4);
+  width: 7rem;
+  height: 7.5rem;
+  
+}
+
+
+.navbar .homeButton{
   margin-right: auto;
 }
 
@@ -150,14 +182,14 @@ a {
 }
 
 
-
-.burger-menu {
+#burger-menu {
   color: var(--primary-color);
-  font-size: 2rem;
+  font-size: 1.5rem;
   border: 0;
   background-color: transparent;
   cursor: pointer;
   display: none;
+  padding: 0;
 }
 
 .sectionDivider {
@@ -194,7 +226,15 @@ a {
   padding:10px;
 }
 
-.headerImage{
+.headerImageContainer{
+  position: absolute;
+  top: 10%;
+  width: 100%;
+  transform: scale(1.5);
+
+}
+
+/* .headerImage{
   position: absolute;
   z-index: -1;
   left: 10%;
@@ -203,7 +243,7 @@ a {
   width: 45vw;
   color: #dcdaab;
   filter: brightness(1);
-}
+} */
 
 .headerText{
   overflow: hidden;
@@ -366,9 +406,9 @@ button.prev:hover, button.next:hover {
   .slide {
     min-width: 29.91%; /* Show 3 slides at a time */
   }
-  .hero{
+  /* .hero{
     padding: 200px 0px 200px 0px;
-  }
+  } */
 }
 
 button,
@@ -429,12 +469,12 @@ textarea {
   height: 5em;
 }
 
-.button {
+.form .button {
   /* Align buttons with the text fields */
   padding-left: 90px; /* same size as the label elements */
 }
 
-button {
+.form button {
   /* This extra margin represent roughly the same space as the space
      between the labels and their text fields */
   margin-left: 0.5em;
@@ -456,4 +496,94 @@ footer a {
   color: white;
   font-size: 0.8rem;
   text-decoration: underline;
+}
+
+/* .navigation{
+  display: flex;
+}
+
+nav ul{
+  display: flex;
+} */
+
+
+
+/* Condensed version of navigation links */
+@media screen and (max-width: 768px) {
+  nav{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: flex-start;
+        
+  }
+
+ 
+  .container{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    align-items: flex-end;
+
+  }
+
+  .navigation{
+    display: none;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+  }
+.container > ul{
+  display: none;
+}
+
+  /* nav > ul{
+    outline: blue auto;
+    display: none;
+  } */
+
+  nav .homeButton{
+    margin-right: auto;
+  }
+  
+  #burger-menu {
+    display: flex; /* Show hamburger menu on small screens */
+  }
+  
+}
+@media screen and (max-width: 415px) {
+  :root,
+  html{
+    font-size: 18px;
+    overflow-x: hidden;
+  
+    
+  }
+
+  header{
+    position: relative;
+    height: 10vh;
+    z-index: 12;
+    /* position: sticky; */
+    /* top: 40%; */
+    top: 0;
+    left: 0;
+    /* padding-top: 120px; */
+    /* margin-top: -50px; */
+    /* margin-bottom: -100px; */
+    /* background-color: black; */
+  
+  }
+
+  button.prev, button.next {
+    top: 50%;
+    padding: 6px;
+  }
+  button.prev {
+    left: 0px;
+  }
+  
+  button.next {
+    right: 0px;
+  }
 }
