@@ -46,50 +46,110 @@ img {
 }
 
 html {
-  background-color: #fff6ec;
+  background-color: #fef6ec;
   font-size: 24px;
   scroll-behavior: smooth;
 }
+header{
+  position: sticky;
+  height: 9vh;
+  z-index: 12;
+  /* position: sticky; */
+  top: 0;
+  left: 0;
+  /* background-color: black; */
 
-nav {
+}
+/* .gradientCircleContainer{
+  position: absolute;
+  width: 50%;
+  top: -5%;
+  left: -5%;
+  z-index: -1;
+  pointer-events: none;
+} */
+.circleImage1{
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  z-index: -1;
+  pointer-events: none;
+  transform: rotate(-135deg);
+  max-width: 40vw;
+  max-height: auto;
+}
+
+.circleImage2{
+  position: absolute;
+  top: 10%;
+  left: 80%;
+  z-index: -1;
+  pointer-events: none;
+  transform: rotate(-20deg);
+  max-width: 30vw;
+  max-height: auto;
+}
+
+hr {
+  border: none; /* Removes default border */
+  height: 1px; /* Sets height */
+  background-color: #ddc6a4; /* Sets background color */
+  margin: 1rem 0; /* Adds space below the hr */
+}
+
+/* nav{
   position: sticky;
   top: 0;
   left: 0;
-  z-index: 2;
+  z-index: 10;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
   padding: 1rem 1rem;
-  background-color: #fff8ef;
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+  background-color: white;
+} */
+
+.navbar{
+  /* position: sticky;
+  top: 0;
+  left: 0; */
+  z-index: 2;
+  /* display: flex; */
+  padding: 1.2rem 1.2rem;
+  background-color: rgba(255,248,239,0.3);
+  /* background-color: #fff8ef; */
 }
+
+.navigation .homeButton{
+  margin-right: auto;
+}
+
 a {
   text-decoration: none;
   color: var(--primary-color);
 }  
 
-nav h1 {
+.navbar h1 {
   color: var(--primary-color);
 }
   
-nav a{
+.navbar a{
   color: var(--primary-color);
   transition: var(--transition);
 }
-nav a:hover {
+.navbar a:hover {
   color: var(--secondary-color);
   border-bottom: 2px solid var(--secondary-color);
 }
   
-nav ul {
+.navbar ul {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
 }
   
-nav ul li {
+.navbar ul li {
   font-weight: var(--bold-font);
 }
+
+
 
 .burger-menu {
   color: var(--primary-color);
@@ -106,6 +166,8 @@ nav ul li {
   border-top: 1px solid #333;
   width: 90%;
 }
+
+
 
 .hero{
   display: flex;
