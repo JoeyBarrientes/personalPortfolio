@@ -70,3 +70,87 @@ document.getElementById('burger-menu').addEventListener('click', function() {
       burgerMenu.style.display = 'flex'; // Show hamburger menu
     }
   });
+
+document.addEventListener('scroll', function() {
+  updateParallax();
+});
+
+window.addEventListener('resize', function() {
+    updateParallax();
+});
+
+function updateParallax() {
+    const scrolled = window.scrollY;
+    const descriptions = document.querySelectorAll('[id^="description"]');
+    const titles = document.querySelectorAll('[id^="title"]');
+
+    // Define the base values
+    const baseDescriptionOffset = 500;
+    const baseTitleOffset = 70;
+    const descSpeed = -0.5;
+    const titleSpeed = -0.05
+    
+        // Calculate the scaling factor based on window width
+        const scaleFactor = Math.min(Math.max(window.innerWidth / 1920, 0.3), 1);
+        console.log(scaleFactor)
+    
+        // Calculate the actual offsets and speed
+        const descriptionOffset = baseDescriptionOffset * (scaleFactor);
+        const titleOffset = baseTitleOffset * scaleFactor;
+        const descSpeed2 = descSpeed * scaleFactor;
+        const titleSpeed2 = titleSpeed * scaleFactor
+    
+        descriptions.forEach((description, index) => {
+            const topOffset = descriptionOffset + (500 * index * scaleFactor);
+            description.style.top = `${topOffset + (scrolled * descSpeed2)}px`;
+        });
+    
+        titles.forEach((title, index) => {
+            const topOffset = titleOffset + (50 * index * scaleFactor);
+            title.style.top = `${topOffset + (scrolled * titleSpeed2)}px`;
+        });
+
+    // let descriptionOffsets;
+    // let titleOffsets;
+
+    // if (window.innerWidth > 768) {
+    //     descriptionOffsets = 400;
+    //     titleOffsets = 70;
+    // } else if (window.innerWidth > 420) {
+    //     descriptionOffsets = 900;
+    //     titleOffsets = 80;
+    // } else if (window.innerWidth < 420){
+    //     descriptionOffsets = 0;
+    //     titleOffsets = 150;
+    // }
+
+    // descriptions.forEach((description, index) => {
+    //     const topOffset = descriptionOffsets + (500 * index);
+    //     const speed = -0.5;
+    //     description.style.top = `${topOffset + (scrolled * speed)}px`;
+    // });
+
+    // titles.forEach((title, index) => {
+    //     const topOffset = titleOffsets + (50 * index);
+    //     const speed = -0.05;
+    //     title.style.top = `${topOffset + (scrolled * speed)}px`;
+    // });
+
+    // const descriptionOffsets = window.innerWidth > 768 ? 400 : 900;
+    // const titleOffsets = window.innerWidth > 768 ? 70 : 80;
+
+    // descriptions.forEach((description, index) => {
+    //     const topOffset = descriptionOffsets + (500 * index);
+    //     const speed = -0.5;
+    //     description.style.top = `${topOffset + (scrolled * speed)}px`;
+    // });
+
+    // titles.forEach((title, index) => {
+    //     const topOffset = titleOffsets + (50 * index);
+    //     const speed = -0.05;
+    //     title.style.top = `${topOffset + (scrolled * speed)}px`;
+    // });
+}
+
+// Initial call to set positions correctly on page load
+updateParallax();

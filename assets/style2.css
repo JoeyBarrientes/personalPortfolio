@@ -59,8 +59,6 @@ header{
   /* position: sticky; */
   top: 0;
   left: 0;
-  /* background-color: black; */
-
 }
 .gradientCircleContainer{
   overflow: hidden;
@@ -107,15 +105,6 @@ hr {
   margin: 1rem 0; /* Adds space below the hr */
 }
 
-/* nav{
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 10;
-  display: flex;
-  padding: 1rem 1rem;
-  background-color: white;
-} */
 
 .navbar{
   position: sticky;
@@ -138,7 +127,6 @@ hr {
   display: none;
   width: 7rem;
   height: 7.5rem;
-  
 }
 
 rect.sideHeader{
@@ -146,7 +134,6 @@ rect.sideHeader{
   fill: rgba(255,248,239,0.4);
   width: 7rem;
   height: 7.5rem;
-  
 }
 
 
@@ -196,7 +183,7 @@ a {
   margin: 40px auto;
   border: 0;
   border-top: 1px solid #333;
-  width: 90%;
+  width: 100%;
 }
 
 
@@ -285,7 +272,8 @@ a {
 #about,
 #projects,
 #contact {
-  margin: 0px 20px 0px 20px;
+  margin: 0px 2rem 0px 2rem;
+  /* margin: 0px 20px 0px 20px; */
   padding-top: 50px;
 }
 
@@ -301,11 +289,13 @@ a {
 #skills h1 span,
 #projects h1 span,
 #contact h1 span {
+  
   font-size: 1rem;
   color: #58545B;
 }
 
 .aboutContainer {
+  /* margin: 0px 2rem 0px 2rem; */
   display: flex;
   flex-direction: column;
   width: 80%;
@@ -411,6 +401,113 @@ button.prev:hover, button.next:hover {
   } */
 }
 
+.projectsContainer{
+  display: flex;
+  flex-direction: column;
+
+  /* flex-direction: column; */
+}
+
+.project1{
+  overflow: hidden;
+}
+
+/* .project-image img{
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  filter: brightness(70%);
+  position: absolute;
+  margin-top: 20px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; Place the image behind the text
+  outline: auto red;
+} */
+
+.proPlace{
+  width: clamp(35vw, 50vw, 500px);
+  height: clamp(30vh, 80vh, 800px);
+  border-radius: 8px;
+  filter: brightness(70%);
+  /* position: absolute; */
+  margin-top: 20px;
+  /* top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+  z-index: -1; /* Place the image behind the text */
+}
+
+
+.project-description {
+  width: 55%;
+  flex: 1;
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-left: -50px; /* To overlap the image */
+  position: relative;
+  left: 500px;
+  z-index: 1;
+  will-change: transform;
+  transform: translateY(0);
+}
+
+.project-title {
+  background-color: #f0e68c;
+  padding: 5px 10px;
+  display: inline-block;
+  border-radius: 4px;
+  margin-top: -50px; /* To position the title above the description box */
+  position: relative;
+  top: 50px;
+  left: 20px;
+  font-weight: bold;
+  z-index: 2;
+  will-change: transform;
+  transform: translateY(0);
+}
+
+.project-text {
+  margin: 10px 0;
+}
+
+.project-text a {
+  color: #58545B;
+  text-decoration: none;
+  
+}
+
+.project-text a:hover {
+  text-decoration: underline;
+  
+}
+
+.project-links {
+  margin-top: 20px;
+}
+
+.project-link {
+  margin-right: 20px;
+  color: #58545B;
+  text-decoration: none;
+  display: inline-block;
+  transition: color 0.3s;
+  transition: var(--transition);
+}
+
+.project-link:hover {
+  color: var(--secondary-color);
+  border-bottom: 2px solid var(--secondary-color);
+  
+}
+
+
 button,
 input,
 select,
@@ -480,8 +577,6 @@ textarea {
   margin-left: 0.5em;
 }
 
-
-
 footer {
   background-color: #58545B;
   color: white;
@@ -497,16 +592,6 @@ footer a {
   font-size: 0.8rem;
   text-decoration: underline;
 }
-
-/* .navigation{
-  display: flex;
-}
-
-nav ul{
-  display: flex;
-} */
-
-
 
 /* Condensed version of navigation links */
 @media screen and (max-width: 768px) {
@@ -537,11 +622,6 @@ nav ul{
   display: none;
 }
 
-  /* nav > ul{
-    outline: blue auto;
-    display: none;
-  } */
-
   nav .homeButton{
     margin-right: auto;
   }
@@ -549,16 +629,32 @@ nav ul{
   #burger-menu {
     display: flex; /* Show hamburger menu on small screens */
   }
+
+  .proPlace{
+    width: 100%;
+  }
+
+  .project-description{
+    left: 80px;
+    width: 80%;
+  }
   
 }
+
 @media screen and (max-width: 415px) {
   :root,
   html{
     font-size: 18px;
-    overflow-x: hidden;
-  
-    
+    overflow-x: hidden; 
   }
+/* 
+  #skills,
+  #about,
+  #projects,
+  #contact {
+    margin: 0px 20px 0px 20px;
+    padding-top: 50px;
+  } */
 
   header{
     position: relative;
@@ -586,4 +682,16 @@ nav ul{
   button.next {
     right: 0px;
   }
+
+
+.proPlace{
+  width: 100%;
+  height: 50vh;
+}
+
+.project-description{
+    left: 19%;
+    width: 80%;
+}
+
 }
