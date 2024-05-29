@@ -42,7 +42,7 @@
 
 document.getElementById('burger-menu').addEventListener('click', function() {
     var navigation = document.querySelector('.navigation');
-    var navLink = document.querySelector('.container > ul');
+    var navLink = document.querySelector('.navContainer > ul');
     var sideHeader = document.querySelector('.sideHeaderContainer');
     if (navigation.style.display === 'flex') {
       navigation.style.display = 'none';
@@ -92,7 +92,6 @@ function updateParallax() {
     
         // Calculate the scaling factor based on window width
         const scaleFactor = Math.min(Math.max(window.innerWidth / 1920, 0.3), 1);
-        console.log(scaleFactor)
     
         // Calculate the actual offsets and speed
         const descriptionOffset = baseDescriptionOffset * (scaleFactor);
