@@ -1,6 +1,8 @@
 
 /* ---------- Slideshow ---------- */
 let currentSlide = 0;
+let isLight = true;
+let hasChanged = 0;
 
 function getVisibleSlides() {
     if (window.innerWidth >= 1240) {
@@ -126,180 +128,118 @@ updateParallax();
 
 /* --------------------------------------------- */
   
-    // Function to set the initial state based on scroll position
+/* ----------------- Change Nav Color ----------------- */
+document.addEventListener('DOMContentLoaded', function() {
+    function hoverNav() {
+        const navLinks = document.querySelectorAll('.navLink a');
 
+        navLinks.forEach(link => {
+            if ((isLight))  {
+                link.classList.add('lightHover');
+                link.classList.remove('darkHover');
+            } else if ((!isLight)) {
+                link.classList.add('darkHover');
+                link.classList.remove('lightHover');
+            }
+        });
+    }
+    setInterval(hoverNav, 10);
+});
 
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     let hasChanged = 4;
-    
-//     function updateNav() {
-//         const navLinks = document.querySelectorAll('.navLink a');
-//         const navLinksCont = document.querySelectorAll('.navLink');
-//         const scrollPosition = window.scrollY;
-//         // let hasChanged = false;
-          
-        
-//         navLinks.forEach(link => {
-//             var computedColor = window.getComputedStyle(document.body).backgroundColor;
-//         console.log(computedColor);
-            
-//             if ((computedColor === 'rgb(71, 45, 48)') && (hasChanged > 0)) { // Check for black color in RGB format
-//                 console.log(true)
-//                 link.style.color = 'white';
-//                 hasChanged--;
-//             } else if ((computedColor === 'rgb(254, 246, 236)') && hasChanged < 4){
-//                 console.log(false)
-//                 link.style.color = 'black';
-//                 hasChanged++;
-//             }
-
-
-//             link.addEventListener('mouseenter', function() {
-//                 // console.log(computedColor)
-//                 if (computedColor === 'rgb(254, 246, 236)') { // Check for black color in RGB format
-//                     link.style.color = 'var(--secondaryColor)';
-//                     link.classList.remove('darkHover')
-//                     link.classList.add('lightHover');
-//                 } else if (computedColor !== 'rgb(254, 246, 236)'){
-//                     link.style.color = 'white';
-//                     link.classList.remove('lightHover');
-//                     link.classList.add('darkHover');        
-//                 }
-//                 });
-
-//             link.addEventListener('mouseleave', function() {
-//                 if (link.classList.contains('lightHover')) {
-//                     link.style.color = 'black';
-//                     link.classList.remove('lightHover');
-//                 } else if (link.classList.contains('darkHover')) {
-//                     link.style.color = 'white';
-//                     link.classList.remove('darkHover');
-//                 }
-//                 });
-
-
-//             // window.addEventListener('scroll', function() {
-//             //     // computedColor = window.getComputedStyle(document.body).backgroundColor;
-                
-
-              
-
-//             // });
-    
-//         });
-//     }
-
-//     setInterval(updateNav, 50);
-
-//   });
-  
 
 /* ---------- Change Background Color ---------- */
+/* ---------- Nav Color Hover ---------- */
 window.addEventListener('scroll', function() {
-    // console.log(window.scrollY)
     const scrollPosition = window.scrollY;
-    var projectsHeader = document.querySelector('.projectsHeader');
-    var projectsSpan = document.querySelector('#projects h1 span');
-    var navLinks = document.querySelectorAll('.navLink a');
+    var sectionHeaders = document.getElementsByTagName('h1');
+    var sectionNums = document.querySelectorAll('h1 span');
+    var aboutText = document.querySelectorAll('#about p');
+    var contactText = document.querySelectorAll('#contact p, #contact a');
     var burgerMenu = document.getElementById('burgerMenu');
-    let hasChanged = false;
+
+    function lightScreen() {
+        isLight = true;
+        document.body.style.backgroundColor = 'var(--bgColor)';
+        for (let i = 0; i < sectionHeaders.length; i++) {
+            sectionHeaders[i].style.color = 'black';
+        }
+        sectionNums.forEach(num => {
+            num.style.color = 'var(--tertiaryColor)';
+        });
+        aboutText.forEach(text => {
+            text.style.color = 'black';
+        });
+        contactText.forEach(contactText => {
+            contactText.style.color = 'black';
+        });
+
+        burgerMenu.style.color = 'black';
+    }
+
+    function darkScreen() {
+        isLight = false;
+        document.body.style.backgroundColor = 'var(--secondaryBgColor)';
+        for (let i = 0; i < sectionHeaders.length; i++) {
+            sectionHeaders[i].style.color = 'var(--bgColor)';
+        }
+        sectionNums.forEach(num => {
+            num.style.color = 'var(--primaryShadow)';
+        });
+        aboutText.forEach(aboutText => {
+            aboutText.style.color = 'var(--bgColor)';
+        });
+        contactText.forEach(contactText => {
+            contactText.style.color = 'var(--bgColor';
+        });
+        burgerMenu.style.color = 'var(--bgColor)';
+    }
+
+    function updateNavColor() {
+        const navLinks = document.querySelectorAll('.navLink a');
+        
+        navLinks.forEach(link => {
+    
+            if ((isLight) && (hasChanged < 4)) {
+                link.classList.remove('darkHover');
+                link.classList.add('lightHover');
+                hasChanged++;
+            } else if ((!isLight) && (hasChanged > 0)){
+                link.classList.remove('lightHover');
+                link.classList.add('darkHover');
+                hasChanged--;}
+        });
+    }
     
     if (window.innerWidth > 500){
-        
-        // navLinks.forEach(link => {
-        //     if (scrollPosition <= 547) {
-        //         // if (!hasChanged){
-        //             link.style.color = 'rgb(0,0,0)';
-        //             // hasChanged = true;
-        //         // }
-        //     } else if (547 < scrollPosition && scrollPosition <= 1434) {
-        //         if (hasChanged){
-        //             link.style.color = 'rgb(0,0,0)';
-        //             hasChanged = false;
-        //         }
-        //     } else if (1434 < scrollPosition && scrollPosition <= 3486) {
-        //         if (!hasChanged){
-        //             link.style.color = 'rgb(0,0,0)';
-        //             hasChanged = true;
-        //         }
-        //         link.style.color = 'rgb(255, 255, 255)';
-        //     } else {
-        //         link.style.color = 'rgb(0,0,0)';
-        //     }
-        // });
     
-
-        // navLinks.forEach(link => {
-        //     var computedColor = window.getComputedStyle(document.body).backgroundColor;
-        // // console.log(computedColor);
-        //     if (scrollPosition <= 547) {
-        //         link.style.color = 'rgb(0,0,0)';
-        //     } else if (547 < scrollPosition && scrollPosition <= 1434) {
-        //         link.style.color = 'rgb(0,0,0)';
-        //     } else if (1434 < scrollPosition && scrollPosition <= 3486) {
-        //         link.style.color = 'rgb(255, 255, 255)';
-        //     } else {
-        //         link.style.color = 'rgb(0,0,0)';
-        //     }
-        // });
-
         if (scrollPosition <= 547) {
-            document.body.style.backgroundColor = '#fef6ec';
-            projectsHeader.style.color = 'black';
-            projectsSpan.style.color = 'var(--tertiaryColor)';
-            burgerMenu.style.color = 'black';
-        } else if (547 < scrollPosition && scrollPosition <= 1434) {
-            document.body.style.backgroundColor = '#fef6ec';
-            projectsHeader.style.color = 'black';
-            projectsSpan.style.color = 'var(--tertiaryColor)';
-            burgerMenu.style.color = 'black';   
-        } else if (1434 < scrollPosition && scrollPosition <= 3600) {
-            document.body.style.backgroundColor = '#472d30';
-            projectsHeader.style.color = 'var(--bgColor)';
-            projectsSpan.style.color = 'var(--primaryShadow)';
-            burgerMenu.style.color = 'var(--bgColor)';
+            lightScreen();
+            updateNavColor();
+        } else if (547 < scrollPosition && scrollPosition <= 1426) {
+            lightScreen();
+            updateNavColor();
+        } else if (1426 < scrollPosition && scrollPosition <= 3413) {
+            darkScreen();
+            updateNavColor();
         } else {
-            document.body.style.backgroundColor = '#fef6ec';
-            projectsHeader.style.color = 'black';
-            projectsSpan.style.color = 'var(--tertiaryColor)';
-            burgerMenu.style.color = 'black';
+            lightScreen();
+            updateNavColor();
         }
 
     } else{
         
-        // navLinks.forEach(link => {
-        //     if (scrollPosition <= 309) {
-        //         link.style.color = 'rgb(0,0,0)';
-        //     } else if (547 < scrollPosition && scrollPosition <= 1434) {
-        //         link.style.color = 'rgb(0,0,0)';
-        //     } else if (1434 < scrollPosition && scrollPosition <= 3486) {
-        //         link.style.color = 'rgb(255, 255, 255)';
-        //     } else {
-        //         link.style.color = 'rgb(0,0,0)';
-        //     }
-        // });
-
         if (scrollPosition <= 309) {
-            document.body.style.backgroundColor = '#fef6ec';
-            projectsHeader.style.color = 'black';
-            projectsSpan.style.color = 'var(--tertiaryColor)';
-            burgerMenu.style.color = 'black';
+            lightScreen();
+            updateNavColor();
         } else if (309 < scrollPosition && scrollPosition <= 1100) {
-            document.body.style.backgroundColor = '#fef6ec';
-            projectsHeader.style.color = 'black';
-            projectsSpan.style.color = 'var(--tertiaryColor)';
-            burgerMenu.style.color = 'black';
-        } else if (1100 < scrollPosition && scrollPosition <= 3168) {
-            document.body.style.backgroundColor = '#472d30';
-            projectsHeader.style.color = 'var(--bgColor)';
-            projectsSpan.style.color = 'var(--primaryShadow)';
-            burgerMenu.style.color = 'var(--bgColor)';
+            lightScreen();
+            updateNavColor();
+        } else if (1100 < scrollPosition && scrollPosition <= 3087) {
+            darkScreen();
+            updateNavColor();
         } else {
-            document.body.style.backgroundColor = '#fef6ec';
-            projectsHeader.style.color = 'black';
-            projectsSpan.style.color = 'var(--tertiaryColor)';
-            burgerMenu.style.color = 'black';
+            lightScreen();
+            updateNavColor();
         }
     }
 });

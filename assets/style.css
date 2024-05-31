@@ -16,8 +16,8 @@
     --normalFontSize: 24px;
   
     --bgColor: #fef6ec;
+    --secondaryBgColor: #472d30;
     --navColor: rgba(255,248,239,0.4);
-    --projectsColor: #472d30;
     --primaryColor: black;
     --secondaryColor: #99582a;
     --tertiaryColor: #58545B;
@@ -51,13 +51,12 @@ a {
 html {
     font-size: var(--normalFontSize);
     scroll-behavior: smooth;
-    
-    /* overflow-x: hidden;     */
+    overflow-x: hidden;    
 }
 
 body {
     background-color: var(--bgColor);
-    transition: background-color 0.5s ease;
+    transition: background-color 0.3s ease;
     /* overflow-x: hidden */
 }
 
@@ -67,6 +66,7 @@ header {
     z-index: 12;
     top: 0;
     left: 0;
+    width: 100%;
 }
 
 .gradientCircleContainer {
@@ -121,10 +121,8 @@ rect.sideHeader {
     max-height: 60px;
     display: flex;
     padding: 0.5rem 1rem 1rem 0.5rem;
-    transition: background-color 0.5s ease;
-    /* background-color: rgba(71,49,45,0.8); */
-    /* background-color: var(--navColor); */
   }
+
 .navContainer {
     display: flex;
     align-items: center;
@@ -132,52 +130,20 @@ rect.sideHeader {
 
 .navbar .homeButton {
     margin-right: auto;
+    transition: var(--transition);
+    border-radius: 10px;
+}
+
+.navbar .homeButton:hover{
+    transition: var(--transition);
+    color: var(--secondaryColor);
+    text-decoration: underline var(--secondaryColor);
+    background-color: var(--primaryShadow);
 }
 
 .navbar a {
-    color: rgba(0, 0, 0);
     text-decoration: none;
     padding: 10px;
-    transition: color var(--transition);
-}
-
-.navLink{
-    color: rgb(0, 0, 0);
-    transition: var(--transition);
-}
-
-.navbar a:hover{
-    transition: var(--transition);
-    color: var(--secondaryColor);
-    text-decoration: underline var(--secondaryColor);
-    background-color: var(--primaryShadow);
-    border-radius: 10px;
-}
-
-/* .navbar ul li:hover {
-    transition: var(--transition);
-    color: var(--secondaryColor);
-    text-decoration: underline var(--projectsColor);
-    background-color: var(--primaryShadow);
-    
-} */
-
-.navbar ul li:hover{
-    transition: var(--transition);
-}
-  
-.lightHover {
-    transition: var(--transition);
-    color: var(--secondaryColor);
-    text-decoration: underline var(--secondaryColor);
-    background-color: var(--primaryShadow);
-    border-radius: 10px;
-  }
-
-.darkHover{
-    transition: var(--transition);
-    background-color: black;
-    text-decoration: underline white;
 }
 
 .navbar ul {
@@ -191,6 +157,32 @@ rect.sideHeader {
     width: 100px;
     text-align: center;
     padding: 8px;
+}
+  
+.lightHover {
+    transition: var(--transition);
+    color: black;
+    border-radius: 10px;
+  }
+
+.lightHover:hover {
+    color: var(--secondaryColor);
+    transition: var(--transition);
+    text-decoration: underline var(--secondaryColor);
+    background-color: var(--primaryShadow);    
+  }
+
+.darkHover {
+    transition: var(--transition);
+    color: var(--bgColor);
+    border-radius: 10px;
+}
+
+.darkHover:hover {
+    color: #e6ccb2;
+    transition: var(--transition);
+    text-decoration: underline #e6ccb2;
+    background-color: #772f1a;
 }
 
 #burgerMenu {
@@ -230,24 +222,6 @@ rect.sideHeader {
     padding:10px;
 }
 
-/* .headerImageContainer {
-    position: absolute;
-    top: 10%;
-    width: 100%;
-    transform: scale(1.5);
-} */
-
-/* .headerImage{
-  position: absolute;
-  z-index: -1;
-  left: 10%;
-  top: -5%;
-  height: 110%;
-  width: 45vw;
-  color: #dcdaab;
-  filter: brightness(1);
-} */
-
 .heroText {
     overflow: hidden;
     text-align: left;
@@ -285,7 +259,7 @@ rect.sideHeader {
 #skills,
 #projects,
 #contact {
-    padding: 4rem 2rem 0 2rem;
+    padding: 3.5rem 2rem 0 2rem;
 }
 
 #about h1,
@@ -293,7 +267,6 @@ rect.sideHeader {
 #projects h1,
 #contact h1 {
     font-size: 1.5rem;
-    padding-top: 10px;
 }
 
 #about h1 span,
@@ -305,10 +278,9 @@ rect.sideHeader {
 }
 
 #about p,
-#skills p,
-#contact p {
+#skills p{
     font-size: 1rem;
-    margin: 10px;
+    padding: 15px;
 }
 
 #about p span,
@@ -326,12 +298,13 @@ rect.sideHeader {
 .skillsContainer {
     position: relative;
     width: 100%;
-    overflow: hidden;  
+    overflow: hidden;    
 }
 
 .slideshow {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    margin-top: 15px;
 }
 
 .slide {
@@ -394,7 +367,6 @@ button.prev:hover, button.next:hover {
 .projectsContainer {
     display: flex;
     flex-direction: column;
-    gap: 50px;
 }
 
 .projectImage {
@@ -407,7 +379,7 @@ button.prev:hover, button.next:hover {
 .project1,
 .project2,
 .project3 {
-    padding: 30px;
+    padding: 25px;
     height: 750px;
 }
 
@@ -475,15 +447,23 @@ button.prev:hover, button.next:hover {
     border-radius: 10px;
 }
 
+#contact{
+    height: 350px;
+}
+
 .contactInfo {
     display: flex;
-    height: 350px;
+    height: 250px;
     width: 100%;
 }
 
 .contactInfo .contactText,
 .contactInfo .contactIcons {
-    margin: auto;
+    margin: auto; 
+}
+
+#contact p{
+    padding: 0px 15px 15px 15px;
 }
 
 .contactInfo a {
@@ -493,7 +473,7 @@ button.prev:hover, button.next:hover {
 .contactText {
     display: flex;
     flex-direction: column;
-    width: max(150%, 120%);
+    width: min(80%);
 }
 
 .contactText a {
@@ -508,7 +488,7 @@ button.prev:hover, button.next:hover {
 }
 
 .contactIcons {
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -656,6 +636,18 @@ footer a {
     .projectImage img {
         height: 100%;
     }
+
+    .contactInfo {
+        height: 300px;
+    }
+
+    #contact p{
+        padding: 20px 10px 0px 10px;
+    }
+
+    .contactText {
+        width: 100%;
+    }
 }
 
 /* Condensed elements for mobile */
@@ -680,12 +672,12 @@ footer a {
     }
 
     .projectDescription {
-        left: 15.5vw;
-        width: 80%;
+        left: 17.5vw;
+        width: 75%;
     }
 
     .projectImage {
-        height: 350px;
+        height: 400px;
     }
 
     .project1,
@@ -693,6 +685,6 @@ footer a {
     .project3 {
         padding-left: 0;
         padding-right: 0;
-        height: 750px;
+        height: 800px;
     }
 }
