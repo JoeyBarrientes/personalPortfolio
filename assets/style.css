@@ -10,6 +10,7 @@
 
 /* ----- VARIABLES ----- */
 :root {
+    font-family: 'Times New Roman', Times, serif;
     --normalFontSize: 24px;
   
     --bgColor: #fef6ec;
