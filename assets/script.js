@@ -182,6 +182,7 @@ function colorModeControl() {
             } else if (547 < scrollPosition && scrollPosition <= 1426) {
                 lightScreen();
                 updateLinkColor();
+                // 3413
             } else if (1426 < scrollPosition && scrollPosition <= contactPosition) {
                 darkScreen();
                 updateLinkColor();

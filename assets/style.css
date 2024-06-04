@@ -10,8 +10,6 @@
 
 /* ----- VARIABLES ----- */
 :root {
-
-    font-family:'Times New Roman', Times, serif;
     --normalFontSize: 24px;
   
     --bgColor: #fef6ec;
@@ -574,6 +572,7 @@ button.prev:hover, button.next:hover {
     color: inherit;
     border-radius: 10px;
 }
+
 
 .contactDark:Hover{
     color: #e6ccb2;
