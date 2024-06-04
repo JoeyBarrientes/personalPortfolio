@@ -1,7 +1,8 @@
 /* ----------  Global --------------------- */
 var isLight = true;
-var hasChanged = 0;
-let currentSlide = 0;
+var hasNavChanged = 0;
+var hasContactChanged = 0;
+var currentSlide = 0;
 const navHoverInterval = 100;
 const slideInterval = 4000;
 
@@ -17,8 +18,10 @@ window.addEventListener('scroll', function() {
 
 /* ----------  Window Resize --------------------- */
 window.addEventListener('resize', function() {
+    colorModeControl();
     switchNav();
     updateParallax();
+    resetNav();
 });
 
 /* ---------- Burger Menu Click --------------------- */
@@ -51,11 +54,24 @@ document.addEventListener('DOMContentLoaded', function() {
 function colorModeControl() {
     const scrollPosition = window.scrollY;
     const sectionHeaders = document.getElementsByTagName('h1');
+    const navigation = document.querySelector('.navigation');
+    const navContainer = document.querySelector('.navContainer');
     const sectionNums = document.querySelectorAll('h1 span');
     const aboutText = document.querySelectorAll('#about p');
-    const contactText = document.querySelectorAll('#contact p, #contact a');
     const burgerMenu = document.getElementById('burgerMenu');
     const homeButton = document.querySelector('.homeButton img');
+    const contactText = document.querySelectorAll('#contact p');
+    const contactLinks = document.querySelectorAll('#contact a');
+    const contactIconContainer = document.querySelector('.contactIcons');
+    const contactSection = document.getElementById('contact');
+    const fullColorOffset = 650;
+    const mobileColorOffset = 744;
+
+    function getScrollYPosition(element) {
+        const rect = element.getBoundingClientRect();
+        const scrollTop = window.scrollY || window.pageYOffset;
+        return rect.top + scrollTop;
+    }    
 
     function lightScreen() {
         isLight = true;
@@ -75,6 +91,14 @@ function colorModeControl() {
 
         burgerMenu.style.color = 'black';
         homeButton.src = 'assets/images/homeDark.svg';
+
+        if(window.innerWidth < 768){
+            if (navigation.style.display === 'flex') {
+                navContainer.style.backgroundColor = ('rgba(255,248,239,0.5)');
+            } else {
+                navContainer.style.backgroundColor = ('transparent')
+            } 
+        }
     }
 
     function darkScreen() {
@@ -90,25 +114,48 @@ function colorModeControl() {
             aboutText.style.color = 'var(--bgColor)';
         });
         contactText.forEach(contactText => {
-            contactText.style.color = 'var(--bgColor';
+            contactText.style.color = 'var(--bgColor)';
         });
         burgerMenu.style.color = 'var(--bgColor)';
-        homeButton.src = 'assets/images/homeLight.svg';        
+        homeButton.src = 'assets/images/homeLight.svg'; 
+
+        if(window.innerWidth < 768){
+            if (navigation.style.display === 'flex') {
+                navContainer.style.backgroundColor = ('rgba(71,45,48,0.5');
+            } else {
+                navContainer.style.backgroundColor = ('transparent')
+            } 
+        }  
     }
 
-    function updateNavColor() {
+    function updateLinkColor() {
         const navLinks = document.querySelectorAll('.navLink a');
         
         navLinks.forEach(link => {
     
-            if ((isLight) && (hasChanged < 4)) {
+            if ((isLight) && (hasNavChanged < 5)) {
                 link.classList.remove('navDark');
                 link.classList.add('navLight');
-                hasChanged++;
-            } else if ((!isLight) && (hasChanged > 0)){
+                hasNavChanged++;
+            } else if ((!isLight) && (hasNavChanged > 0)){
                 link.classList.remove('navLight');
                 link.classList.add('navDark');
-                hasChanged--;}
+                hasNavChanged--;}
+        });
+
+        contactLinks.forEach(text => {
+    
+            if ((isLight) && (hasContactChanged < 4)) {
+                contactIconContainer.style.color = 'black';
+                text.classList.remove('contactDark');
+                text.classList.add('contactLight');
+                hasContactChanged++;
+            } else if ((!isLight) && (hasContactChanged > 0)){
+                contactIconContainer.style.color = 'var(--bgColor)';
+                text.classList.remove('contactLight');
+                text.classList.add('contactDark');
+                hasContactChanged--;
+            }
         });
 
         if ((isLight)) {
@@ -128,35 +175,36 @@ function colorModeControl() {
 
     function initiateColorChange() {
         if (window.innerWidth > 500){
-    
+            const contactPosition = (getScrollYPosition(contactSection)) - fullColorOffset;
             if (scrollPosition <= 547) {
                 lightScreen();
-                updateNavColor();
+                updateLinkColor();
             } else if (547 < scrollPosition && scrollPosition <= 1426) {
                 lightScreen();
-                updateNavColor();
-            } else if (1426 < scrollPosition && scrollPosition <= 3413) {
+                updateLinkColor();
+                // 3413
+            } else if (1426 < scrollPosition && scrollPosition <= contactPosition) {
                 darkScreen();
-                updateNavColor();
+                updateLinkColor();
             } else {
                 lightScreen();
-                updateNavColor();
+                updateLinkColor();
             }
     
         } else{
-            
+            const contactPosition = (getScrollYPosition(contactSection)) - mobileColorOffset;
             if (scrollPosition <= 309) {
                 lightScreen();
-                updateNavColor();
-            } else if (309 < scrollPosition && scrollPosition <= 1388) {
+                updateLinkColor();
+            } else if (309 < scrollPosition && scrollPosition <= 1334) {
                 lightScreen();
-                updateNavColor();
-            } else if (1388 < scrollPosition && scrollPosition <= 3460) {
+                updateLinkColor();
+            } else if (1334 < scrollPosition && scrollPosition <= contactPosition) {
                 darkScreen();
-                updateNavColor();
+                updateLinkColor();
             } else {
                 lightScreen();
-                updateNavColor();
+                updateLinkColor();
             }
         }
     }
@@ -166,15 +214,31 @@ function colorModeControl() {
 
 /* --------------------------------------------------------------------------- */
 function menuClick() {
-    var navigation = document.querySelector('.navigation');
-    var navLink = document.querySelector('.navContainer > ul');
+    const navigation = document.querySelector('.navigation');
+    const navLink = document.querySelector('.navContainer > ul');
+    const navContainer = document.querySelector('.navContainer');
+    
     if (navigation.style.display === 'flex') {
         navigation.style.display = 'none';
         navLink.style.display = 'none';
+        navContainer.style.backgroundColor = ('transparent')
+        
     } else {
         navigation.style.display = 'flex';
         navLink.style.display = 'flex';
+        if(isLight) {
+            navContainer.style.backgroundColor = ('rgba(255,248,239,0.5)');
+        } else if (!isLight) {
+            navContainer.style.backgroundColor = ('rgba(71,45,48,0.5)');
+        }
     }
+}
+
+/* --------------------------------------------------------------------------- */
+function resetNav(){
+    const navContainer = document.querySelector('.navContainer');
+
+    navContainer.style.backgroundColor = ('transparent');
 }
 
 /* --------------------------------------------------------------------------- */

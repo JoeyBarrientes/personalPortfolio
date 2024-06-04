@@ -1,6 +1,3 @@
-/* ----- NORMALIZE ----- */
-@import 'node_modules/modern-normalize/modern-normalize.css';
-
 @font-face {
     font-family: cinzelRegular;
     src: url(./fonts/Cinzel-Regular.otf);
@@ -60,6 +57,7 @@ body {
 }
 
 header {
+    position: -webkit-sticky;
     position: sticky;
     height: 9vh;
     z-index: 12;
@@ -97,60 +95,54 @@ header {
     max-height: auto;
 }
 
-.sideHeaderContainer {
-    z-index: -1;
-    position: absolute;
-    pointer-events: none;
-    top: -10px;
-    left: 75vw;
-    display: none;
-    width: 6.5rem;
-    height: 7.5rem;
-    border-radius: 0px 0px 25px 25px;
-}
-
-rect.sideHeader {
-    fill: rgba(255,248,239,0.8);;
-    width: 7rem;
-    height: 8.5rem;
-}
-
 .navbar {
+    position: -webkit-sticky; 
     position: sticky;
     top: 0;
     left: 0;
-    z-index: 2;
-    max-height: 60px;
+    z-index: 1000;
+    height: 100%;
     display: flex;
-    padding: 0.5rem 1rem 1rem 0.5rem;
+    align-items: flex-start;
   }
 
 .navContainer {
     display: flex;
-    align-items: center;
+    min-height: 75px;
+    min-width: 110px;
+    background-color: transparent;
 }
 
 .navbar .homeButton {
+    display: flex;
     margin-right: auto;
+    justify-content: center;
+    align-items: center;
+    min-height: 75px;
+    margin-left: 10px;
 }
 
 .navbar ul{
     display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
 }
 
 .navLink a {
     display: flex;
     text-decoration: none;
-    padding: 10px;
+    padding: 8px;
     justify-content: center;
-    align-items: center;
 }
   
 .navbar ul li {
     font-weight: 800;
     border-radius: 10px;
-    width: 100px;
-    padding: 10px;
+    width: 110px;
+    height: auto;
+    padding: 5px;
+    text-wrap: nowrap;
 }
 
 .navbar .homeButton img {
@@ -197,11 +189,14 @@ rect.sideHeader {
 
 #burgerMenu {
     font-size: 1.5rem;
+    width: 40%;
+    min-height: 75px;
     border: 0;
     cursor: pointer;
     display: none;
+    margin-right: 20px;
     padding: 5px 8px 5px 8px;
-    border-radius: 10px; 
+    border-radius: 10px;   
 }
 
 .burgerLight {
@@ -494,18 +489,25 @@ button.prev:hover, button.next:hover {
 }
 
 #contact {
-    height: 350px;
+    display: flex;
+    height: 400px;
+}
+
+.contactContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .contactInfo {
     display: flex;
-    height: 250px;
+    height: 60%;
     width: 100%;
 }
 
 .contactInfo .contactText,
 .contactInfo .contactIcons {
-    margin: auto; 
+    margin: auto;
 }
 
 #contact p {
@@ -524,13 +526,7 @@ button.prev:hover, button.next:hover {
 
 .contactText a {
     text-decoration: underline;
-    transition: var(--transition)
-}
-
-.contactText a:hover {
     transition: var(--transition);
-    color: var(--secondaryColor);
-    text-decoration: underline var(--secondaryColor);   
 }
 
 .contactIcons {
@@ -546,7 +542,8 @@ button.prev:hover, button.next:hover {
 }
 
 .linkedIn,
-.github {
+.github,
+.handshake {
     display: flex;
     gap: 15px;
     justify-content: flex-start;
@@ -559,23 +556,55 @@ button.prev:hover, button.next:hover {
 }
 
 .linkedIn:hover,
-.github:hover {
+.github:hover,
+.handshake:hover {
     transition: var(--transition);
     color: var(--secondaryColor);
     text-decoration: underline var(--secondaryColor);
     background-color: var(--primaryShadow);
     border-radius: 10px;
 }
-
-.linkedInBlue,
-.githubBlue {
-    position: absolute;
-    opacity: 0;
+.contactText a {
+    color:inherit;
 }
 
-.linkedIn:hover .linkedInBlue,
-.github:hover .githubBlue {
+.contactIcons a {
+    color: inherit;
+    border-radius: 10px;
+}
+
+
+.contactDark:Hover{
+    color: #e6ccb2;
+    transition: var(--transition);
+    text-decoration: underline #e6ccb2;
+    background-color: #772f1a;
+}
+
+.contactLight:Hover{
+    transition: var(--transition);
+    color: var(--secondaryColor);
+    text-decoration: underline var(--secondaryColor);
+    background-color: var(--primaryShadow);
+}
+
+.linkedInColor,
+.githubColor,
+.handshakeColor {
+    position: absolute;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.linkedIn:hover .linkedInColor,
+.github:hover .githubColor,
+.handshake:hover .handshakeColor {
     opacity: 1;
+    transition: var(--transition);
+}
+
+.handshake:hover .handshakeBlack {
+    opacity: 0;
     transition: var(--transition);
 }
 
@@ -638,18 +667,24 @@ footer a {
         flex-direction: row;
         align-items: flex-start;
         justify-content: flex-start;
-        height: 40px;
+        min-height: 75px;
     }
 
     .navbar ul li {
-        text-align: right;
+        font-size: 0.9rem;
+        padding: 10px;
+        width: 80%;
     }
 
     .navContainer {
         display: flex;
-        gap: 20px;
+        gap: 5px;
         flex-direction: column;
         align-items: flex-end;
+    }
+
+    .navLink a {
+        padding: 8px;
     }
 
     .navigation {
@@ -669,6 +704,8 @@ footer a {
   
     #burgerMenu {
         display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .projectImage {
@@ -716,8 +753,9 @@ footer a {
     } 
 
     header {
-        position: relative;
-        height: 10vh;
+        position: -webkit-sticky;
+        position: sticky;
+        height: 75px;
         z-index: 12;
         top: 0;
         left: 0;  
@@ -743,5 +781,9 @@ footer a {
         padding-left: 0;
         padding-right: 0;
         height: 800px;
+    }
+
+    .contactIcons span{
+        font-size: small;
     }
 }
